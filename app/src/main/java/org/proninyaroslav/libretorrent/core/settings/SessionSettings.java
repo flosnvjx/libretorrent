@@ -112,6 +112,10 @@ public class SessionSettings
     public String[] defaultTrackersList = new String[]{};
     public boolean validateHttpsTrackers = DEFAULT_VALIDATE_HTTPS_TRACKERS;
     public boolean posixDiskIo = DEFAULT_POSIX_DISK_IO;
+    // Disk cache settings
+    public int diskCacheSize = -1;
+    public int cacheExpiry = 60;
+    public int writeCacheLineSize = 4;
 
     public SessionSettings() {}
 
@@ -159,6 +163,9 @@ public class SessionSettings
         this.defaultTrackersList = other.defaultTrackersList;
         this.validateHttpsTrackers = other.validateHttpsTrackers;
         this.posixDiskIo = other.posixDiskIo;
+        this.diskCacheSize = other.diskCacheSize;
+        this.cacheExpiry = other.cacheExpiry;
+        this.writeCacheLineSize = other.writeCacheLineSize;
     }
 
     public enum EncryptMode

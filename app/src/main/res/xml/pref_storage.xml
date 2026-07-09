@@ -15,6 +15,33 @@
         android:title="@string/pref_save_torrents_in_title"
         app:singleLineTitle="false" />
 
+    <PreferenceCategory android:title="Disk cache settings">
+
+        <EditTextPreference
+            android:key="@string/pref_key_disk_cache_size"
+            android:persistent="false"
+            android:title="@string/pref_disk_cache_size_title"
+            android:summary="@string/pref_disk_cache_size_summary"
+            android:inputType="numberSigned"
+            app:singleLineTitle="false" />
+
+        <EditTextPreference
+            android:key="@string/pref_key_cache_expiry"
+            android:persistent="false"
+            android:title="@string/pref_cache_expiry_title"
+            android:summary="@string/pref_cache_expiry_summary"
+            android:inputType="number"
+            app:singleLineTitle="false" />
+
+        <EditTextPreference
+            android:key="@string/pref_key_write_cache_line_size"
+            android:persistent="false"
+            android:title="@string/pref_write_cache_line_size_title"
+            android:summary="@string/pref_write_cache_line_size_summary"
+            android:inputType="number"
+            app:singleLineTitle="false" />
+    </PreferenceCategory>
+
     <PreferenceCategory android:title="@string/pref_watch_dir_title">
 
         <SwitchPreferenceCompat

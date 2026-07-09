@@ -129,6 +129,10 @@ public class SettingsRepositoryImpl implements SettingsRepository {
             return "file://" + SystemFacadeHelper.getFileSystemFacade(context).getDefaultDownloadPath();
         }
 
+        static final int diskCacheSize = -1;
+        static final int cacheExpiry = 60;
+        static final int writeCacheLineSize = 4;
+
         static final boolean watchDirDeleteFile = false;
         static final boolean posixDiskIo = SessionSettings.DEFAULT_POSIX_DISK_IO;
         static final boolean anonymousMode = SessionSettings.DEFAULT_ANONYMOUS_MODE;
@@ -254,6 +258,9 @@ public class SettingsRepositoryImpl implements SettingsRepository {
         }
         settings.validateHttpsTrackers = validateHttpsTrackers();
         settings.posixDiskIo = posixDiskIo();
+        settings.diskCacheSize = diskCacheSize();
+        settings.cacheExpiry = cacheExpiry();
+        settings.writeCacheLineSize = writeCacheLineSize();
 
         settings.proxyType = SessionSettings.ProxyType.fromValue(proxyType());
         settings.proxyAddress = proxyAddress();
@@ -884,6 +891,47 @@ public class SettingsRepositoryImpl implements SettingsRepository {
                 .putBoolean(appContext.getString(R.string.pref_key_posix_disk_io), val)
                 .apply();
     }
+
+    @Override
+    public int diskCacheSize() {
+        return pref.getInt(appContext.getString(R.string.pref_key_disk_cache_size),
+                Default.diskCacheSize);
+    }
+
+    @Override
+    public void diskCacheSize(int val) {
+        pref.edit()
+                .putInt(appContext.getString(R.string.pref_key_disk_cache_size), val)
+                .apply();
+    }
+
+    @Override
+    public int cacheExpiry() {
+        return pref.getInt(appContext.getString(R.string.pref_key_cache_expiry),
+                Default.cacheExpiry);
+    }
+
+    @Override
+    public void cacheExpiry(int val) {
+        pref.edit()
+                .putInt(appContext.getString(R.string.pref_key_cache_expiry), val)
+                .apply();
+    }
+
+    @Override
+    public int writeCacheLineSize() {
+        return pref.getInt(appContext.getString(R.string.pref_key_write_cache_line_size),
+                Default.writeCacheLineSize);
+    }
+
+    @Override
+    public void writeCacheLineSize(int val) {
+        pref.edit()
+                .putInt(appContext.getString(R.string.pref_key_write_cache_line_size), val)
+                .apply();
+    }
+
+
 
     @Override
     public int maxDownloadSpeedLimit() {

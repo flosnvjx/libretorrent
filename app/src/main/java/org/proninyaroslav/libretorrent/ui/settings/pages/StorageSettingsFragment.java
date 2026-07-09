@@ -206,6 +206,34 @@ public class StorageSettingsFragment extends CustomPreferenceFragment
             bindOnPreferenceChangeListener(posixDiskIo);
         }
 
+        // Disk cache preferences
+        String keyDiskCacheSize = getString(R.string.pref_key_disk_cache_size);
+        EditTextPreference diskCacheSize = findPreference(keyDiskCacheSize);
+        if (diskCacheSize != null) {
+            String value = Integer.toString(pref.diskCacheSize());
+            diskCacheSize.setSummary(value);
+            diskCacheSize.setText(value);
+            bindOnPreferenceChangeListener(diskCacheSize);
+        }
+
+        String keyCacheExpiry = getString(R.string.pref_key_cache_expiry);
+        EditTextPreference cacheExpiry = findPreference(keyCacheExpiry);
+        if (cacheExpiry != null) {
+            String value = Integer.toString(pref.cacheExpiry());
+            cacheExpiry.setSummary(value);
+            cacheExpiry.setText(value);
+            bindOnPreferenceChangeListener(cacheExpiry);
+        }
+
+        String keyWriteCacheLineSize = getString(R.string.pref_key_write_cache_line_size);
+        EditTextPreference writeCacheLineSize = findPreference(keyWriteCacheLineSize);
+        if (writeCacheLineSize != null) {
+            String value = Integer.toString(pref.writeCacheLineSize());
+            writeCacheLineSize.setSummary(value);
+            writeCacheLineSize.setText(value);
+            bindOnPreferenceChangeListener(writeCacheLineSize);
+        }
+
         var navBarFragment = activity.findNavBarFragment(this);
         if (navBarFragment != null) {
             setChooseFolderDialogListener(navBarFragment);
@@ -303,6 +331,12 @@ public class StorageSettingsFragment extends CustomPreferenceFragment
                     R.string.apply_settings_after_reboot,
                     Snackbar.LENGTH_LONG
             ).show();
+        } else if (preference.getKey().equals(getString(R.string.pref_key_write_cache_line_size))) {
+            int value = 4;
+            if (!TextUtils.isEmpty((String) newValue))
+                value = Integer.parseInt((String) newValue);
+            pref.writeCacheLineSize(value);
+            preference.setSummary(Integer.toString(value));
         }
 
         return true;

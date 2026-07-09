@@ -132,4 +132,9 @@
     <string name="pref_key_ask_manage_all_access_permission" translatable="false">pref_key_ask_manage_all_access_permission</string>
     <string name="pref_key_show_manage_all_files_warning_dialog" translatable="false">pref_key_show_manage_all_files_warning_dialog</string>
     <string name="pref_key_ask_notification_permission" translatable="false">pref_key_ask_notification_permission</string>
+
+    <!-- disk cache -->
+    <string name="pref_key_disk_cache_size" translatable="false">pref_key_disk_cache_size</string>
+    <string name="pref_key_cache_expiry" translatable="false">pref_key_cache_expiry</string>
+    <string name="pref_key_write_cache_line_size" translatable="false">pref_key_write_cache_line_size</string>
 </resources>

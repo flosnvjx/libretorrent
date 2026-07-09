@@ -248,6 +248,19 @@ public interface SettingsRepository
     void posixDiskIo(boolean val);
 
     /*
+     * Disk cache settings
+     */
+
+    int diskCacheSize();
+    void diskCacheSize(int val);
+
+    int cacheExpiry();
+    void cacheExpiry(int val);
+
+    int writeCacheLineSize();
+    void writeCacheLineSize(int val);
+
+    /*
      * Limitations settings
      */
 

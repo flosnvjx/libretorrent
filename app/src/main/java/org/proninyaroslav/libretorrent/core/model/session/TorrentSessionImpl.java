@@ -1204,6 +1204,9 @@ public class TorrentSessionImpl extends SessionManager
         sp.seedingOutgoingConnections(settings.seedingOutgoingConnections);
         sp.setInteger(settings_pack.int_types.alert_mask.swigValue(), getAlertMask(settings).to_int());
         sp.setBoolean(settings_pack.bool_types.validate_https_trackers.swigValue(), settings.validateHttpsTrackers);
+        sp.setInteger(settings_pack.int_types.disk_cache_size.swigValue(), settings.diskCacheSize);
+        sp.setInteger(settings_pack.int_types.cache_expiry.swigValue(), settings.cacheExpiry);
+        sp.setInteger(settings_pack.int_types.write_cache_line_size.swigValue(), settings.writeCacheLineSize);
 
         applyProxy(settings, sp);
     }

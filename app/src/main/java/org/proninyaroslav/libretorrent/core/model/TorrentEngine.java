@@ -1525,7 +1525,16 @@ public class TorrentEngine {
             s.encryptModeIncoming = getEncryptInConnectionsMode();
             session.setSettings(s);
 
+        } else if (key.equals(appContext.getString(R.string.pref_key_disk_cache_size)) ||
+                   key.equals(appContext.getString(R.string.pref_key_cache_expiry)) ||
+                   key.equals(appContext.getString(R.string.pref_key_write_cache_line_size))) {
+            SessionSettings s = session.getSettings();
+            s.diskCacheSize = pref.diskCacheSize();
+            s.cacheExpiry = pref.cacheExpiry();
+            s.writeCacheLineSize = pref.writeCacheLineSize();
+            session.setSettings(s);
         } else if (key.equals(appContext.getString(R.string.pref_key_enc_out_connections_mode))) {
+
             SessionSettings s = session.getSettings();
             s.encryptModeOutcoming = getEncryptOutConnectionsMode();
             session.setSettings(s);
